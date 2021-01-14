@@ -45,12 +45,20 @@ namespace DZ_8_Delegates_Events_Lambda
     {
         public Sport_Car(string _car_name, string _driver, int _speed) : base(_car_name, _driver, _speed) { base.type = "Sport_Car"; }
 
+        public delegate void delegate_finish();
+        public event delegate_finish eventFinish;
         public override void Drive()
         {
-            current_length += speed;
-
-            var rand = new Random();
-            speed = rand.Next(0, 30);
+            if (current_length >= finish)
+            {
+                eventFinish();
+                return;
+            }
+            else
+            {
+                current_length += speed;
+                speed = GlobalVariables.rand.Next(0, 30);
+            }
         }
 
     }
@@ -59,12 +67,20 @@ namespace DZ_8_Delegates_Events_Lambda
     {
         public Light_Car(string _car_name, string _driver, int _speed) : base(_car_name, _driver, _speed) { base.type = "Light_car"; }
 
+        public delegate void delegate_finish();
+        public event delegate_finish eventFinish;
         public override void Drive()
         {
-            current_length += speed;
-
-            var rand = new Random();
-            speed = rand.Next(0, 20);
+            if (current_length >= finish)
+            {
+                eventFinish();
+                return;
+            }
+            else
+            {
+                current_length += speed;
+                speed = GlobalVariables.rand.Next(0, 20);
+            }
         }
 
     }

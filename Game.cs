@@ -14,6 +14,7 @@ namespace DZ_8_Delegates_Events_Lambda
         public delegate void delegate_show_info();
         public event delegate_drive event_info;
 
+
         public void Drive_dispetcher()
         {
             event_drive();
@@ -21,6 +22,12 @@ namespace DZ_8_Delegates_Events_Lambda
         public void Show_info_dispetcher()
         {
             event_info();
+        }
+
+        public void Stop_Game()
+        {
+            GlobalVariables.stop_game = true;
+            Console.WriteLine("Finish!");
         }
     }
 }
